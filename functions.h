@@ -1,0 +1,10 @@
+void addData(struct employees EMP[],int size);
+void editRow(struct employees EMP[]);
+void deleteRaw(struct employees EMP[]);
+void previewChanges(struct employees EMP[]);
+void saveChanges(struct employees EMP[]);
+void viewDataTable();
+void editDataTable();
+void menu();
+void getEmployeeDetails(struct employees EMP[],int num);
+float calculateSalaryGross(int basicSalary);
