@@ -1,37 +1,30 @@
 #include <stdio.h>
 #include "functions.h"
 
-int loopCount=0;
+#define EXIT_CODE 19091
 
-struct employees{
-    int id;
-    char name[20];
-    int salaryBasic;
-    float salaryGross;
-};
+int loopCount=0,size=0,option=0;
 
 int main(){
-
-    int count,option,size=0;
+    int count;
+    struct employees EMP[100];
     menu();
-    while(option!=99){
+    while(option!=19091||option==0){
         switch(option){
             case 1:
             printf("Enter Number Of Employees : ");
             scanf("%d",&count);
-            if(count>0){
-                size += count;
-                struct employees EMP[size];
-                addData(EMP,size);
+            if(size+count>100){
+                printf("Limit Exceeded. Max = 100.\n\n");
             }else{
-                printf("Invalid Input.\n\n");
-                menu();
+                size += count;
+                printf("\n");
+                addData(EMP,count);
             }
             break;
             case 2:
             if(size == 0){
                 printf("You have Not Any Unsaved Data To Edit.\n\n");
-                menu();
             }else{
                 editRow(EMP);
             }
@@ -39,7 +32,6 @@ int main(){
             case 3:
             if(size == 0){
                 printf("You have Not Any Unsaved Data To Delete.\n\n");
-                menu();
             }else{
                 deleteRaw(EMP);
             }
@@ -47,7 +39,6 @@ int main(){
             case 4:
             if(size == 0){
                 printf("You have Not Any Unsaved Data To Preview.\n\n");
-                menu();
             }else{
                 previewChanges(EMP);
             }
@@ -55,7 +46,6 @@ int main(){
             case 5:
             if(size == 0){
                 printf("You have Not Any Unsaved Data To Save.\n\n");
-                menu();
             }else{
                 saveChanges(EMP);
             }
@@ -67,13 +57,19 @@ int main(){
             editDataTable();
             break;
             case 8:
-            printf("You Are Exited..\n");
-            option = 99;
+            if(loopCount != 0 && size != 0){
+                char answer[4];
+                printf("Your changes have not been saved.\nDo you want to Exit without save changes? ('yes' / 'no') : ");
+                scanf("%s", answer);
+                (answer[0]=='y')?option = EXIT_CODE:(answer[0]=='n')?saveChanges(EMP):printf("Invalid Input\n");
+            }else{
+                option = EXIT_CODE;
+            }
             break;
             default:
             printf("Invalid Input\n\n");
-            menu();
         }
+        (option!=19091)?menu():printf("You Are Exited..\n");
     }
     return 0;
 }
