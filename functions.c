@@ -12,28 +12,29 @@ void addData(struct employees EMP[],int count){
         getEmployeeDetails(EMP,loopCount);
         loopCount++;
     }
-    printf("\n");
+    printf("You Successfully added %d Employee/Employees..",count);
 }
 
 void editRow(struct employees EMP[]){
 
     int num;
     previewChanges(EMP);
-    printf("Enter Row Number You Want Edit : ");
+    printf("Enter Row Number You Want To Edit : ");
     scanf("%d",&num);
     if(num>0 && (num-1)<loopCount){
         printf("Enter Employee ID, Employee Name, Basic Salary : ");
         getEmployeeDetails(EMP,num-1);
     }else{
-        printf("Invalid input\n\n");
+        printf("Invalid Input\n\n");
     }
+    printf("You Successfully Edited The Raw %d..",num);
 }
 
 void deleteRaw(struct employees EMP[]){
 
     int num;
     previewChanges(EMP);
-    printf("Enter Row Number You Want Delete : ");
+    printf("Enter Row Number You Want To Delete : ");
     scanf("%d",&num);
     if(num>0 && (num-1)<loopCount){
         for(int i=num-1;i<loopCount;i++){
@@ -50,6 +51,7 @@ void deleteRaw(struct employees EMP[]){
     }else{
         printf("Invalid input\n\n");
     }
+    printf("You Successfully Deleted The Raw..");
 }
 
 void previewChanges(struct employees EMP[]){
@@ -80,7 +82,7 @@ void saveChanges(struct employees EMP[]){
     fclose(fp);
     loopCount = 0;
     size = 0;
-    printf("Your changes saved..\n");
+    printf("Your Changes Have Been Saved..\n");
 }
 
 void viewDataTable(){

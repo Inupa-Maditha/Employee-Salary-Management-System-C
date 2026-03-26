@@ -59,7 +59,7 @@ int main(){
             case 8:
             if(loopCount != 0 && size != 0){
                 char answer[4];
-                printf("Your changes have not been saved.\nDo you want to Exit without save changes? ('yes' / 'no') : ");
+                printf("Your Changes Have Not Been Saved.\nDo you want to Exit without saving changes? ('yes' / 'no') : ");
                 scanf("%s", answer);
                 (answer[0]=='y')?option = EXIT_CODE:(answer[0]=='n')?saveChanges(EMP):printf("Invalid Input\n");
             }else{
@@ -69,7 +69,7 @@ int main(){
             default:
             printf("Invalid Input\n\n");
         }
-        (option!=19091)?menu():printf("You Are Exited..\n");
+        (option!=19091)?menu():printf("You Have Successfully Exited...\n");
     }
     return 0;
 }
