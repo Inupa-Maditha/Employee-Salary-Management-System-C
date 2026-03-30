@@ -1,4 +1,4 @@
-# Employee Management System (C)
+# Employee Salary Management System (C)
 
 A simple command-line Employee Management System built using the C programming language. This application allows users to manage employee records, perform CRUD operations, and save data to a file.
 
